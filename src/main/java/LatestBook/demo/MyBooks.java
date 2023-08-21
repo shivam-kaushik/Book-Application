@@ -1,6 +1,8 @@
 package LatestBook.demo;
 import jakarta.persistence.*;
 
+import java.sql.Blob;
+
 //import javax.persistence.*;
 @Entity
 @Table
@@ -9,14 +11,16 @@ public class MyBooks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    private String username;
-    @Column
-    private String email;
+    private String title;
 
-    public MyBooks(String username, String email) {
-        this.username = username;
-        this.email = email;
-    }
+    @Column
+    private String author;
+
+    @Column
+    private String description;
+
+    @Column
+    private Blob image;
 
     public int getId() {
         return id;
@@ -26,20 +30,44 @@ public class MyBooks {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
+    }
+
+    public MyBooks(int id, String title, String author, String desc, Blob image) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = desc;
+        this.image = image;
     }
 
     public MyBooks() {
